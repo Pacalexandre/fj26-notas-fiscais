@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/_template.xhtml">
+<ui:define name="corpo">
+		<fieldset>
+			<legend>Listagem de Notas Fiscais</legend>
+				<p:dataTable value="#{listaNotasFiscalBean.notasFiscais}" var="notaFiscal" paginator="true" rows="5" styleClass="dados" rowClasses="impar,par"> >
+					<p:column>#{notaFiscal.cnpj}</p:column>
+					<p:column>
+						<h:outputText value="#{notaFiscal.data.time}">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+						</h:outputText>
+					</p:column>	
+				</p:dataTable>
+		</fieldset>
+</ui:define>
+</ui:composition>
+</html>
