@@ -6,7 +6,6 @@
 	<ui:define name="corpo">
 		<div>
 			<h2>Login Sistema</h2>
-			<h:form id="formlogin">
 				<h:panelGrid columns="2">
 					<h:outputLabel value="Login:" for="login" />
 					<h:inputText id="login" value="#{loginBean.usuario.login}" />
@@ -18,7 +17,6 @@
 						action="#{loginBean.efetuaLogin}" />
 
 				</h:panelGrid>
-			</h:form>
 		</div>
 	</ui:define>
 </ui:composition>

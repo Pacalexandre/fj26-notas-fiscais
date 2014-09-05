@@ -29,7 +29,11 @@ public class LoginBean {
 			return "login";
 		}
 	}
-
+	
+	public String logout() {
+		usuarioLogado.deslogar();
+		return "login";
+	}
 	public Usuario getUsuario() {
 		return this.usuario;
 	}

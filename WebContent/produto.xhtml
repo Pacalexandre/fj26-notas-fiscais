@@ -6,68 +6,65 @@
 	<ui:define name="corpo">
 		<div>
 			<h2>Listagem de Produtos</h2>
-			<h:form>
-				<fieldset>
-					<legend>Dados de Produto</legend>
-					<h:inputHidden value="#{produtoBean.produto.id}" />
-					<h2>
-						<h:outputText value="Novo Produto"
-							rendered="#{empty produtoBean.produto.id}" />
-						<h:outputText value="Editar Produto"
-							rendered="#{not empty produtoBean.produto.id}" />
-					</h2>
-					<h:panelGrid columns="2">
-						<h:outputLabel value="Nome:" for="nome" />
-						<h:inputText id="nome" value="#{produtoBean.produto.nome}" />
+			<fieldset>
+				<legend>Dados de Produto</legend>
+				<h:inputHidden value="#{produtoBean.produto.id}" />
+				<h2>
+					<h:outputText value="Novo Produto"
+						rendered="#{empty produtoBean.produto.id}" />
+					<h:outputText value="Editar Produto"
+						rendered="#{not empty produtoBean.produto.id}" />
+				</h2>
+				<h:panelGrid columns="2">
+					<h:outputLabel value="Nome:" for="nome" />
+					<h:inputText id="nome" value="#{produtoBean.produto.nome}" />
 
-						<h:outputLabel value="Descrição:" for="descricao" />
-						<h:inputTextarea id="descricao"
-							value="#{produtoBean.produto.descricao}" />
+					<h:outputLabel value="Descrição:" for="descricao" />
+					<h:inputTextarea id="descricao"
+						value="#{produtoBean.produto.descricao}" />
 
-						<h:outputLabel value="Preço:" for="preco" />
-						<h:inputText id="preco" value="#{produtoBean.produto.preco}" />
+					<h:outputLabel value="Preço:" for="preco" />
+					<h:inputText id="preco" value="#{produtoBean.produto.preco}" />
 
-						<h:outputLabel value="Data:" for="data" />
-						<h:inputText id="data">
-							<f:passThroughAttribute name="type" value="date" />
-						</h:inputText>
+					<h:outputLabel value="Data:" for="data" />
+					<h:inputText id="data">
+						<f:passThroughAttribute name="type" value="date" />
+					</h:inputText>
 
-						<h:commandButton value="Gravar" action="#{produtoBean.grava}" />
-						<h:commandButton value="Cancela" action="#{produtoBean.cancela}"
-							rendered="#{not empty produtoBean.produto.id}">
-							<f:ajax render="@form" />
-						</h:commandButton>
-					</h:panelGrid>
-				</fieldset>
-				<h:dataTable value="#{produtoBean.produtos}" var="produto"
-					styleClass="dados" rowClasses="impar,par">
-					<h:column>
-						<f:facet name="header">Nome</f:facet>
+					<h:commandButton value="Gravar" action="#{produtoBean.grava}" />
+					<h:commandButton value="Cancela" action="#{produtoBean.cancela}"
+						rendered="#{not empty produtoBean.produto.id}">
+						<f:ajax render="@form" />
+					</h:commandButton>
+				</h:panelGrid>
+			</fieldset>
+			<h:dataTable value="#{produtoBean.produtos}" var="produto"
+				styleClass="dados" rowClasses="impar,par">
+				<h:column>
+					<f:facet name="header">Nome</f:facet>
 		#{produto.nome}
 	</h:column>
-					<h:column>
-						<f:facet name="header">Descriçao</f:facet>
+				<h:column>
+					<f:facet name="header">Descriçao</f:facet>
 		#{produto.descricao}
 	</h:column>
-					<h:column>
-						<f:facet name="header">Preço</f:facet>
+				<h:column>
+					<f:facet name="header">Preço</f:facet>
 		#{produto.preco}
 	</h:column>
-					<h:column>
-						<f:facet name="header">Ações</f:facet>
-						<h:commandLink action="#{produtoBean.remove(produto)}"
-							value="Remover">
-							<f:ajax render="@form" />
-						</h:commandLink>
+				<h:column>
+					<f:facet name="header">Ações</f:facet>
+					<h:commandLink action="#{produtoBean.remove(produto)}"
+						value="Remover">
+						<f:ajax render="@form" />
+					</h:commandLink>
 
-						<h:commandLink value="Alterar">
-							<f:setPropertyActionListener target="#{produtoBean.produto}"
-								value="#{produto}" />
-						</h:commandLink>
-					</h:column>
-				</h:dataTable>
-
-			</h:form>
+					<h:commandLink value="Alterar">
+						<f:setPropertyActionListener target="#{produtoBean.produto}"
+							value="#{produto}" />
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
 		</div>
 	</ui:define>
 </ui:composition>

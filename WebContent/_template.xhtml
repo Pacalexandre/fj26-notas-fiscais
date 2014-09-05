@@ -3,24 +3,36 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Sistema de Notas Fiscais</title>
 	<h:outputStylesheet library="css" name="style.css" />
 </h:head>
 <h:body>
+	<h:form>
 	<div id="cabecalho">
 		<h:graphicImage library="imagens" name="logo-uber.png"
 			id="logoCompany" />
 		<div id="usuarioLogado">Logado como: 
 			#{usuarioLogadoBean.usuario.login}</div>
 	</div>
-
+	<div id="menu">
+		<p:menubar>
+		<p:menuitem value="Produtos" url="produto.xhtml" />
+		<p:submenu label="Notas Fiscal" >
+			<p:menuitem value="Cadastro" url="notafiscal.xhtml" />
+			<p:menuitem value="Listagem" url="paginacao.xhtml" />
+		</p:submenu>
+		<p:menuitem value="Sair" action="#{loginBean.logout}" />
+	</p:menubar>
+	</div>
 	<div id="conteudo">
 		<ui:insert name="corpo" />
 	</div>
 
 	<div id="rodape">Copyright 2014 - pacalexandre@gmail.com</div>
+	</h:form>
 </h:body>
 </html>
